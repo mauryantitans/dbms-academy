@@ -1,0 +1,16 @@
+// Dev container for GitHub Codespaces (or any dev container host). On every start, .devcontainer/start.sh
+// builds and starts the full Docker Compose stack, and the site is forwarded on port 8080 (Ports tab).
+// The first start builds the images and takes a few minutes.
+{
+  "name": "DB Academy",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "hostRequirements": { "cpus": 2, "memory": "8gb" },
+  "forwardPorts": [8080],
+  "portsAttributes": {
+    "8080": { "label": "DB Academy", "onAutoForward": "openBrowser" }
+  },
+  "postStartCommand": "bash .devcontainer/start.sh"
+}

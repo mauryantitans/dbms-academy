@@ -52,6 +52,13 @@ docker compose up --build # http://localhost:8080
 This starts two MySQL 8.4 servers — `app-db` for application data and a hardened `sandbox-db` for learner SQL —
 plus the FastAPI backend and an nginx-served frontend.
 
+## Run in GitHub Codespaces
+
+[Create a codespace](https://codespaces.new/mauryantitans/dbms-academy): the dev container (`.devcontainer/`) builds and
+starts the same Docker Compose stack automatically, writing `.env` with random secrets on first start. When it is up,
+open port **8080** from the **Ports** tab; set the port's visibility to **Public** to share the link (sign-up is open
+to anyone who has it).
+
 ## Tests and content validation
 
 ```bash
