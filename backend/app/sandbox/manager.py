@@ -407,8 +407,11 @@ class LabManager:
             account = f"'{schema}'@'{s.sandbox_account_host}'"
             self.admin(f"DROP DATABASE IF EXISTS `{schema}`")
             self.admin(f"CREATE DATABASE `{schema}` CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci")
+            # This statement is parameterized, so PyMySQL %-formats it: a literal '%' (the account host in Docker,
+            # 'lab_x'@'%') must be doubled. Statements run without args (GRANT, DROP USER) are sent as-is.
             self.admin(
-                f"CREATE USER IF NOT EXISTS {account} IDENTIFIED BY %s WITH MAX_QUERIES_PER_HOUR {s.lab_max_queries_per_hour} "
+                f"CREATE USER IF NOT EXISTS {account.replace('%', '%%')} IDENTIFIED BY %s "
+                f"WITH MAX_QUERIES_PER_HOUR {s.lab_max_queries_per_hour} "
                 f"MAX_USER_CONNECTIONS {s.lab_max_user_connections}", (self.lab_password(schema),))
             # In GRANT, '_' in a database name is a wildcard: escape it so the grant covers exactly this schema.
             self.admin(f"GRANT {LAB_PRIVILEGES} ON `{schema.replace('_', chr(92) + '_')}`.* TO {account}")
