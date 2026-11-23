@@ -2,7 +2,7 @@
 id: m02-null-three-valued-logic
 dataset: shop
 summary: What NULL means in a relational database, why it forces SQL into three-valued logic (TRUE, FALSE, UNKNOWN), the full AND/OR/NOT truth tables executed on MySQL, the IS [NOT] NULL, IS [NOT] UNKNOWN and null-safe <=> operators, NULL in arithmetic and string concatenation, and how NOT NULL, UNIQUE, CHECK and PRIMARY KEY treat NULL.
-concepts: [null, three-valued-logic, truth-tables, is-null, null-safe-equality, null-arithmetic, null-constraints]
+concepts: ["null", three-valued-logic, truth-tables, is-null, null-safe-equality, null-arithmetic, null-constraints]
 references:
   - title: "MySQL 8.4 Reference Manual — Working with NULL Values"
     url: https://dev.mysql.com/doc/refman/8.4/en/working-with-null.html
@@ -512,7 +512,7 @@ These exercises use only `SELECT`, `WHERE` and `COUNT`/`SUM`, which you can use 
 id: ex1
 title: Orders without a discount code
 difficulty: easy
-concepts: [is-null, null]
+concepts: [is-null, "null"]
 prompt: |
   Return **one row with one column** named `no_code`: the number of orders that did not use any
   discount code (their `discount_code` is NULL).
@@ -549,7 +549,7 @@ explanation: |
 id: ex3
 title: Contact labels that survive missing phones
 difficulty: medium
-concepts: [null-arithmetic, null]
+concepts: [null-arithmetic, "null"]
 prompt: |
   For customers 1 to 10, return two columns in this order:
 
@@ -602,7 +602,7 @@ explanation: |
 id: ex5
 title: Price rules with open-ended bounds
 difficulty: challenge
-concepts: [three-valued-logic, null, is-null]
+concepts: [three-valued-logic, "null", is-null]
 setup: |
   CREATE TABLE price_rules (
     rule_id   INT PRIMARY KEY,
@@ -645,7 +645,7 @@ id: ex6
 title: NULL or sentinel for an end date?
 difficulty: medium
 kind: open
-concepts: [null, null-constraints]
+concepts: ["null", null-constraints]
 prompt: |
   A table `employment(employee_id, start_date, end_date)` records job assignments. A colleague proposes
   `end_date DATE NOT NULL DEFAULT '9999-12-31'` for current assignments instead of a nullable `end_date`.

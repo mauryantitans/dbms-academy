@@ -2,7 +2,7 @@
 id: m01-relational-model
 dataset: library
 summary: Codd's relational model made precise — domains, attributes, tuples, relations, degree and cardinality, the properties every relation has — and how MySQL tables map onto it, including the places where SQL deliberately departs from the theory (duplicate rows, column order, NULL and three-valued logic).
-concepts: [relation, tuple, attribute, domain, degree, cardinality, relation-properties, null, three-valued-logic, bag-semantics]
+concepts: [relation, tuple, attribute, domain, degree, cardinality, relation-properties, "null", three-valued-logic, bag-semantics]
 related: [m01-schemas-three-schema-architecture]
 references:
   - title: "MySQL 8.4 Reference Manual — Data Types"
@@ -431,7 +431,7 @@ explanation: |
 id: ex2
 title: Authors not from the United States — including unknowns
 difficulty: medium
-concepts: [null, three-valued-logic]
+concepts: ["null", three-valued-logic]
 prompt: |
   The library wants a list of authors who are **not known to be from the United States** — that includes
   authors whose country is unknown. Return `author_id` and `name`.
@@ -504,7 +504,7 @@ id: ex5
 title: Is this spreadsheet a relation?
 difficulty: challenge
 kind: open
-concepts: [relation-properties, domain, null, atomic-values]
+concepts: [relation-properties, domain, "null", atomic-values]
 prompt: |
   A library volunteer kept this sheet (first row = header):
 
@@ -565,7 +565,7 @@ solution: |
   options: ["1", "0", "NULL", "An error"]
   answer: 2
   explanation: "Any comparison with NULL using = or <> yields UNKNOWN, which MySQL returns as NULL. It is neither true (1) nor false (0), and it is not an error."
-  concepts: [null, three-valued-logic]
+  concepts: ["null", three-valued-logic]
 - id: q4
   question: "Which MySQL construct comes closest to a relational *domain*?"
   options:
@@ -595,7 +595,7 @@ solution: |
     - "COUNT(*) ignores NULLs"
   answer: 1
   explanation: "x NOT IN (a, NULL) means x <> a AND x <> NULL; the second part is UNKNOWN, so the conjunction is UNKNOWN or FALSE, never TRUE. COUNT(*) counts rows and ignores nothing; NOT IN is supported."
-  concepts: [null, three-valued-logic]
+  concepts: ["null", three-valued-logic]
 - id: q7
   question: "A query without ORDER BY has always returned rows in primary-key order. After a DBA adds an index, the order changes. What is the correct diagnosis?"
   options:

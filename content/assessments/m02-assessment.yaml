@@ -226,7 +226,7 @@ challenges:
     title: Shipping SLA breaches
     dataset: shop
     difficulty: medium
-    concepts: [three-valued-logic, null]
+    concepts: [three-valued-logic, "null"]
     prompt: |
       The shop promises to ship every order within **3 days** (72 hours) of `order_date`. Considering all
       orders except those with status `cancelled`, return **one row** with three columns in this order:
@@ -407,7 +407,7 @@ interview:
       in MySQL. Bug 2: `NOT IN (subquery)` returns no rows when the subquery yields a NULL, because `x <> NULL` is
       UNKNOWN. Fix: use `NOT EXISTS`. Related: change detection with `old <> new` misses NULL transitions — use
       `NOT (old <=> new)`. Preventively, declare columns NOT NULL whenever the value is always known.
-    concepts: [three-valued-logic, null]
+    concepts: [three-valued-logic, "null"]
   - id: i3
     question: "Our order numbers have gaps and the finance team thinks data is missing. How do you explain it, and what would you change?"
     answer: |
